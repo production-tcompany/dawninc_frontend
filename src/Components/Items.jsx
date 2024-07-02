@@ -31,7 +31,7 @@ export const Items = () => {
         >
           <div className="justify-items-center">
             <img
-              class="w-8 h-8 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 "
+              class="w-8 h-8 p-0.5 rounded-full ring-2 ring-gray-900 "
               src="https://img.freepik.com/free-photo/abstract-luxury-plain-blur-grey-black-gradient-used-as-background-studio-wall-display-your-products_1258-101806.jpg?size=338&ext=jpg&ga=GA1.1.1788614524.1719792000&semt=ais_user"
               alt="Bordered avatar"
             ></img>
