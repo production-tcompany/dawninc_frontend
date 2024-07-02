@@ -1,6 +1,12 @@
 import React from "react";
 import { ProductDisplay } from "../Components/ProductDisplay";
+import { RelatedProducts } from "../Components/RelatedProducts";
 
 export const Product = () => {
-  return <ProductDisplay />;
+  return (
+    <div>
+      <ProductDisplay />
+      <RelatedProducts />
+    </div>
+  );
 };
