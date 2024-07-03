@@ -5,6 +5,7 @@ import { BsCart, BsFillTriangleFill } from "react-icons/bs";
 import { FaRegCircle } from "react-icons/fa";
 import { ShopContext } from "../Context/ShopContext";
 import { Cart } from "../Util/Cart";
+import logo from "../Assets/LOGO.png"
 
 export const Navbar = () => {
   const location = useLocation();
@@ -49,7 +50,7 @@ export const Navbar = () => {
         </button>
         <Link to="/" className="flex justify-center">
           <img
-            src="https://s3-alpha-sig.figma.com/img/cb9f/6ae9/78c2aa35bcf4dae3731048b842aca7d3?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cjo5h3NHV~lhJ7hsz3Wmb2ghy9aZ3dCHxN3PrIZ-AQpB0l5SHFaZ6KN4ucFXNjGuvYTu7T-wD4x6OQL9KtOXhZ1mpIlkmBY6uthw3UaT2rytAEcGuJLoEFCFVaJ76UscKhcGPcV1BJdXv8e-EutYn2PTMemweULpD8GvJ5K7K1sHVXmCehFGl62j8JZ-C3az4jmQt6rBCCOYs3Ht93Urf8z9X8d1Ifg4TIYJsEuNTLYFmi0c7YRmKX4BtvFVaQhDeZEl0rimm~NaPQgR7LXOLM3vrJxylXiXsIa8XPKAat16D63Ou-VEr-qVOfMZZOjJQFZj7EMn45f8oR0Zm~b7bA__"
+            src={logo}
             alt="Logo"
             className="h-24"
           />
@@ -73,7 +74,7 @@ export const Navbar = () => {
             </Link>
           </li>
           <li className="flex justify-evenly space-x-4 w-full px-4">
-            <Link to="/login" className="text-black font-light">
+            <Link to="/account" className="text-black font-light">
               Account
             </Link>
             <Link to="/login" className="text-black font-light">
@@ -169,14 +170,14 @@ export const Navbar = () => {
               </div>
             )}
           </div>
-          <Link to="/login" className={`font-light ${textColor}`}>
+          <Link to="/account" className={`font-light ${textColor}`}>
             Account
           </Link>
         </div>
 
         <div className="flex justify-center absolute left-1/2 transform -translate-x-1/2">
           <img
-            src="https://s3-alpha-sig.figma.com/img/cb9f/6ae9/78c2aa35bcf4dae3731048b842aca7d3?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cjo5h3NHV~lhJ7hsz3Wmb2ghy9aZ3dCHxN3PrIZ-AQpB0l5SHFaZ6KN4ucFXNjGuvYTu7T-wD4x6OQL9KtOXhZ1mpIlkmBY6uthw3UaT2rytAEcGuJLoEFCFVaJ76UscKhcGPcV1BJdXv8e-EutYn2PTMemweULpD8GvJ5K7K1sHVXmCehFGl62j8JZ-C3az4jmQt6rBCCOYs3Ht93Urf8z9X8d1Ifg4TIYJsEuNTLYFmi0c7YRmKX4BtvFVaQhDeZEl0rimm~NaPQgR7LXOLM3vrJxylXiXsIa8XPKAat16D63Ou-VEr-qVOfMZZOjJQFZj7EMn45f8oR0Zm~b7bA__"
+            src={logo}
             alt="Logo"
             className="h-10 md:h-28"
           />

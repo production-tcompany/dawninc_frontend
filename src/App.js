@@ -6,6 +6,7 @@ import { Collections } from "./Pages/Collections";
 import { Product } from "./Pages/Product";
 import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signin";
+import { Account } from "./Pages/Account"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/product" element={<Product />} />
         </Routes>
