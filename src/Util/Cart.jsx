@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from "react";
 
 import { ShopContext } from "../Context/ShopContext";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { HiArrowLongRight } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Cart = () => {
@@ -13,8 +13,6 @@ export const Cart = () => {
     { id: 2, name: "Black Normal Tees", image: "path_to_black_image" },
     { id: 3, name: "White Normal Tees", image: "path_to_white_image" },
     { id: 4, name: "Grey Normal Tees", image: "path_to_grey_image" },
-    { id: 5, name: "Black Normal Tees", image: "path_to_black_image" },
-    { id: 5, name: "Black Normal Tees", image: "path_to_black_image" },
   ];
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -58,20 +56,7 @@ export const Cart = () => {
                           >
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Close panel</span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="size-6"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-                              />
-                            </svg>
+                            <HiArrowLongRight className="w-10 h-10 mr-2" />
                           </button>
                         </div>
                       </div>
@@ -95,7 +80,7 @@ export const Cart = () => {
                           ) : null} */}
                           <ul
                             role="list"
-                            className="-my-6 divide-y divide-gray-200"
+                            className="-my-6 divide-y divide-gray-200 p-2"
                           >
                             {products.map((product) => {
                               return (
@@ -142,20 +127,19 @@ export const Cart = () => {
                               );
                             })}
                           </ul>
+                          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                            <div className="flex justify-between text-base font-medium text-gray-900">
+                              <p>Subtotal</p>
+                              <p>₹1000</p>
+                            </div>
+
+                            <div className="mt-6">
+                              <button className="bg-black text-white px-6 py-3 rounded mr-4 w-full hover:bg-gray-800">
+                                Checkout
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-
-                    <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                      <div className="flex justify-between text-base font-medium text-gray-900">
-                        <p>Subtotal</p>
-                        <p>₹1000</p>
-                      </div>
-
-                      <div className="mt-6">
-                        <button className="bg-black text-white px-6 py-3 rounded mr-4 w-full hover:bg-gray-800">
-                          Checkout
-                        </button>
                       </div>
                     </div>
                   </div>
