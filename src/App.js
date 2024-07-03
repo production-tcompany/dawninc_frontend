@@ -4,6 +4,8 @@ import { Home } from "./Pages/Home";
 import { Fotter } from "./Components/Fotter";
 import { Collections } from "./Pages/Collections";
 import { Product } from "./Pages/Product";
+import { Login } from "./Pages/Login";
+import { Signup } from "./Pages/Signin";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/product" element={<Product />} />
         </Routes>
