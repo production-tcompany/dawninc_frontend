@@ -20,7 +20,7 @@ export const RelatedProducts = () => {
   return (
     <div className="p-6">
       <h4 className="text-3xl font-normal mt-12">People also bought</h4>
-      <div className="mt-4 overflow-x-auto">
+      <div className="mt-4 overflow-x-auto no-scrollbar">
         <div className="flex ">
           {products.map((product) => (
             <div key={product.id} className="flex-shrink-0 w-64 border p-4">

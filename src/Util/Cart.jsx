@@ -80,7 +80,7 @@ export const Cart = () => {
                           ) : null} */}
                           <ul
                             role="list"
-                            className="-my-6 divide-y divide-gray-200 p-2"
+                            className="-my-6 divide-y divide-gray-200 p-2 "
                           >
                             {products.map((product) => {
                               return (

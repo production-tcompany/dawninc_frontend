@@ -1,5 +1,6 @@
 import React from "react";
 import { DetailsDropdown } from "../Util/DetailsDropdown";
+import { CiHeart } from "react-icons/ci";
 
 export const ProductDisplay = () => {
   return (
@@ -10,7 +11,11 @@ export const ProductDisplay = () => {
           <div className="text-sm text-gray-500">
             Home / Store / Grey Normal Tees
           </div>
-          <h1 className="text-3xl font-bold mt-12">Grey Normal Tees Cotton</h1>
+          <div className="flex justify-between mt-12">
+            <h1 className="text-3xl font-bold ">Grey Normal Tees Cotton</h1>
+            <CiHeart className="w-4 h-4 md:w-6 md:h-6 text-black" />
+          </div>
+
           <div className="text-xl font-semibold mt-4">₹1099</div>
           <div className="text-grey-500 mt-6">Rating: 4.1</div>
 
