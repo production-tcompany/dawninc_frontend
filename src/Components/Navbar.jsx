@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { BsCart, BsFillTriangleFill } from "react-icons/bs";
+import { Cart } from "../Util/Cart";
+import { ShopContext } from "../Context/ShopContext";
 
 export const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  //cart_open
+  const { open, setOpen } = useContext(ShopContext);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -67,11 +72,15 @@ export const Navbar = () => {
         <a
           href="#"
           className="flex items-center text-white space-x-2 md:space-x-3 font-light"
+          onClick={() => {
+            setOpen(true);
+          }}
         >
           <span>Shopping Cart</span>
           <BsCart className="w-4 h-4 md:w-6 md:h-6 ml-1 md:ml-2" />
         </a>
       </div>
+      <Cart />
     </nav>
   );
 };
