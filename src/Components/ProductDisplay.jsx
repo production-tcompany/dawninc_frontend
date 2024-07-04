@@ -7,7 +7,7 @@ export const ProductDisplay = () => {
     <div className="pt-28">
       <div className="flex flex-col md:flex-row p-8">
         {/* Product Details */}
-        <div className="w-full md:w-1/2 outline outline-offset-2 outline-grey-900 p-8">
+        <div className="w-full md:w-1/2  p-8">
           <div className="text-sm text-gray-500">
             Home / Store / Grey Normal Tees
           </div>
