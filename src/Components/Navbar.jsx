@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { BsCart, BsFillTriangleFill } from "react-icons/bs";
-import { FaRegCircle } from "react-icons/fa";
+import { HiMenuAlt4 } from "react-icons/hi";
 import { ShopContext } from "../Context/ShopContext";
 import { Cart } from "../Util/Cart";
 import logo from "../Assets/LOGO.png"
@@ -16,6 +16,10 @@ export const Navbar = () => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsSidebarDropdownOpen(!isSidebarDropdownOpen);
   };
 
   const handleClickOutside = (event) => {
@@ -44,9 +48,9 @@ export const Navbar = () => {
   return (
     <>
       {/* Mobile View */}
-      <nav className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-2 md:hidden">
+      <nav className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-8 py-6 md:hidden">
         <button onClick={toggleSidebar}>
-          <FaRegCircle className={`w-6 h-6 ${textColor}`} />
+          <HiMenuAlt4 className={`w-8 h-8 ${textColor}`} />
         </button>
         <Link to="/" className="flex justify-center">
           <img
@@ -63,11 +67,11 @@ export const Navbar = () => {
       {/* Side Navigation Bar */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 w-64 h-full bg-white z-20 transform ${
+        className={`fixed top-0 left-0 w-56 h-full bg-white z-20 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300`}
       >
-        <ul className="flex flex-col items-center space-y-8 mt-8 py-20">
+        <ul className="flex flex-col items-center space-y-12 mt-8 py-20">
           <li>
             <Link to="/" className="text-black font-light">
               Home
@@ -81,16 +85,13 @@ export const Navbar = () => {
               Wishlist
             </Link>
           </li>
-          <li
-            className="relative"
-            onMouseEnter={() => setIsSidebarDropdownOpen(true)}
-            onMouseLeave={(e) => {
-              if (!e.currentTarget.contains(e.relatedTarget)) {
-                setIsSidebarDropdownOpen(false);
-              }
-            }}
-          >
-            <button className="flex items-center text-black font-light">
+          <li>
+            <Link to="/track-order" className="text-black font-light">
+              Track your order
+            </Link>
+          </li>
+          <li className="relative">
+            <button onClick={toggleDropdown} className="flex items-center text-black font-light">
               Collections
               <BsFillTriangleFill
                 className={`ml-2 md:ml-4 mt-1 transform transition-transform w-2 h-2 ${
@@ -100,16 +101,7 @@ export const Navbar = () => {
             </button>
             {isSidebarDropdownOpen && (
               <div
-                className="absolute left-0 flex flex-col space-y-2 mt-2 p-4 bg-white"
-                onMouseEnter={() => setIsSidebarDropdownOpen(true)}
-                onMouseLeave={(e) => {
-                  if (!e.currentTarget.contains(e.relatedTarget)) {
-                    setTimeout(() => {
-                      setIsSidebarDropdownOpen(false);
-                    }, 1000);
-                  }
-                }}
-              >
+                className="absolute left-0 flex flex-col space-y-2 mt-2 p-4 bg-white">
                 <Link to="/collections/" className="text-black font-light">
                   Shirts
                 </Link>
@@ -125,25 +117,26 @@ export const Navbar = () => {
               </div>
             )}
           </li>
+          <li className="absolute bottom-6 left-0 w-full flex flex-col items-center space-y-4 border-t-2 pt-6">
+            <Link to="/help" className="text-black font-light">
+              Help
+            </Link>
+            <Link to="/faq" className="text-black font-light">
+              FAQs
+            </Link>
+          </li>
         </ul>
       </div>
 
       {/* Larger Screens View */}
       <nav className="hidden md:flex fixed top-0 left-0 right-0 z-10 items-center justify-between px-4 py-4 md:px-12 md:py-8">
-        <div className="flex items-center space-x-4 md:space-x-24">
+        <div className="flex items-center md:space-x-4 lg:space-x-24">
           <Link to="/" className={`font-light ${textColor}`}>
             Home
           </Link>
           <div
             className="relative group"
             onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={(e) => {
-              if (!e.currentTarget.contains(e.relatedTarget)) {
-                setTimeout(() => {
-                  setIsDropdownOpen(false);
-                }, 1000);
-              }
-            }}
           >
             <button className={`flex items-center font-light ${textColor}`}>
               Collections
@@ -155,8 +148,7 @@ export const Navbar = () => {
             </button>
             {isDropdownOpen && (
               <div
-                className={`absolute left-0 flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 mt-2 p-4 whitespace-nowrap font-light ${textColor}`}
-                onMouseEnter={() => setIsDropdownOpen(true)}
+                className={`absolute left-0 flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 mt-2 p-2 whitespace-nowrap font-light ${textColor}`}
                 onMouseLeave={(e) => {
                   if (!e.currentTarget.contains(e.relatedTarget)) {
                     setIsDropdownOpen(false);
@@ -183,7 +175,10 @@ export const Navbar = () => {
           />
         </div>
 
-        <div className="flex items-center space-x-4 md:space-x-14">
+        <div className="flex items-center md:space-x-4 lg:space-x-24">
+          <Link to="/track-order" className={`font-light ${textColor}`}>
+            Track your order
+          </Link>
           <a href="#">
             <div className="flex justify-center">
               <CiHeart className={`w-4 h-4 md:w-6 md:h-6 ${textColor}`} />
