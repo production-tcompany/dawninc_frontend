@@ -5,7 +5,7 @@ import { BsCart, BsFillTriangleFill } from "react-icons/bs";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { ShopContext } from "../Context/ShopContext";
 import { Cart } from "../Util/Cart";
-import logo from "../Assets/LOGO.png"
+import logo from "../Assets/LOGO.png";
 
 export const Navbar = () => {
   const location = useLocation();
@@ -53,15 +53,15 @@ export const Navbar = () => {
           <HiMenuAlt4 className={`w-8 h-8 ${textColor}`} />
         </button>
         <Link to="/" className="flex justify-center">
-          <img
-            src={logo}
-            alt="Logo"
-            className="h-24"
-          />
+          <img src={logo} alt="Logo" className="h-24" />
         </Link>
-        <Link to="/login">
-          <BsCart className={`w-6 h-6 ${textColor}`} />
-        </Link>
+
+        <BsCart
+          onClick={() => {
+            setOpen(true);
+          }}
+          className={`w-6 h-6 ${textColor}`}
+        />
       </nav>
 
       {/* Side Navigation Bar */}
@@ -91,7 +91,10 @@ export const Navbar = () => {
             </Link>
           </li>
           <li className="relative">
-            <button onClick={toggleDropdown} className="flex items-center text-black font-light">
+            <button
+              onClick={toggleDropdown}
+              className="flex items-center text-black font-light"
+            >
               Collections
               <BsFillTriangleFill
                 className={`ml-2 md:ml-4 mt-1 transform transition-transform w-2 h-2 ${
@@ -100,8 +103,7 @@ export const Navbar = () => {
               />
             </button>
             {isSidebarDropdownOpen && (
-              <div
-                className="absolute left-0 flex flex-col space-y-2 mt-2 p-4 bg-white">
+              <div className="absolute left-0 flex flex-col space-y-2 mt-2 p-4 bg-white">
                 <Link to="/collections/" className="text-black font-light">
                   Shirts
                 </Link>
@@ -168,11 +170,7 @@ export const Navbar = () => {
         </div>
 
         <div className="flex justify-center absolute left-1/2 transform -translate-x-1/2">
-          <img
-            src={logo}
-            alt="Logo"
-            className="h-10 md:h-28"
-          />
+          <img src={logo} alt="Logo" className="h-10 md:h-28" />
         </div>
 
         <div className="flex items-center md:space-x-4 lg:space-x-24">
