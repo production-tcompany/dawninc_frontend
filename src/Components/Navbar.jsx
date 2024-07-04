@@ -86,7 +86,7 @@ export const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/track-order" className="text-black font-light">
+            <Link to="/orders" className="text-black font-light">
               Track your order
             </Link>
           </li>
@@ -176,7 +176,7 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center md:space-x-4 lg:space-x-24">
-          <Link to="/track-order" className={`font-light ${textColor}`}>
+          <Link to="/orders" className={`font-light ${textColor}`}>
             Track your order
           </Link>
           <a href="#">
