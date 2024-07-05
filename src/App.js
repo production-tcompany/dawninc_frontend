@@ -8,6 +8,7 @@ import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signin";
 import { Account } from "./Pages/Account";
 import { Orders } from "./Pages/Orders"
+import { TrackOrder } from "./Pages/TrackOrder"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/account" element={<Account />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/trackorders" element={<TrackOrder />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/product" element={<Product />} />
         </Routes>
