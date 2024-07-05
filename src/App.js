@@ -9,7 +9,6 @@ import { Signup } from "./Pages/Signin";
 import { Account } from "./Pages/Account";
 import { Orders } from "./Pages/Orders";
 import { Wishlist } from "./Pages/Wishlist";
-import { Orders } from "./Pages/Orders"
 import { TrackOrder } from "./Pages/TrackOrder"
 
 function App() {

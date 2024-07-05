@@ -2,24 +2,52 @@ import React from 'react';
 import { OrderSub } from '../Util/OrderSub';
 
 export const TrackOrderItem = ({ imageSrc, productName, size, color, status, deliveryDate, tracking }) => {
+  
+  const trueStatusItems = tracking.filter((item, index) => item.status);
+  const falseStatusItems = tracking.filter((item, index) => !item.status && index !== tracking.length - 1);
+  const lastItem = tracking[tracking.length - 1];
+
   return (
-    <div className="flex flex-col justify-between items-start md:items-center p-4 border border-gray-300 rounded-lg mb-4">
-      <OrderSub imageSrc={imageSrc} productName={productName} size={size} color={color}/>
-      <div className="mt-4 md:mt-0">
-        <h3 className="font-semibold mb-2">Order Status</h3>
-        <div className="relative pl-4">
-          {tracking.map((item, index) => (
-            <div key={index} className="flex items-center mb-2">
-              <div className={`w-4 h-4 rounded-full border-2 ${item.status ? 'border-black' : 'border-gray-300'}`}></div>
-              <div className="ml-2">
-                <p className={`${item.status ? 'text-black' : 'text-gray-500'} font-semibold`}>{item.label}</p>
-                <p className={`${item.status ? 'text-black' : 'text-gray-500'} text-xs`}>{item.date}</p>
+    <div className="flex flex-col justify-center items-center p-8 pt-12 ">
+      <div className='md:mr-96 mr-14'>
+        <OrderSub imageSrc={imageSrc} productName={productName} size={size} color={color}/>
+      </div>
+      <div className="mt-10 text-sm md:border-s-2 border-gray-300 md:pl-20 pl-2">
+        <ol className="relative flex flex-col justify-center items-start">
+          {trueStatusItems.map((item, index) => (
+            <li key={index} className="pb-2" style={{ marginLeft: '', position: 'relative' }}>
+              {index !== trueStatusItems.length - 1 && (
+                <span className="absolute h-full w-[1px] bg-black"></span>
+              )}
+              <span className="absolute w-2 h-2 bg-white ring ring-black rounded-full left-[-0.2rem]"></span>
+              <div className="ml-4 text-left">
+                <h3 className="text-black">{item.label}</h3>
+                <p className="text-sm text-black">{item.date || 'Pending'}</p>
               </div>
-            </div>
+            </li>
           ))}
-          <div className="absolute top-2 left-1.5 w-0.5 h-full bg-gray-300"></div>
-        </div>
-        <p className="mt-2 text-xs">Delivery expected by {deliveryDate}</p>
+          {falseStatusItems.map((item, index) => (
+            <li key={index} className="pb-2 text-xs" style={{ marginLeft: '10rem', position: 'relative' }}>
+            {index !== trueStatusItems.length - 1 && (
+              <span className="absolute h-full w-[1px] bg-black"></span>
+            )}
+            <span className="absolute w-3 h-3 bg-white ring-1 ring-black rounded-full left-[-0.35rem]"></span>
+            <div className="ml-4 text-left">
+              <h3 className="text-black">{item.label}</h3>
+              <p className=" text-black">{item.date || 'Pending'}</p>
+            </div>
+          </li>
+          ))}
+          {!trueStatusItems.includes(lastItem) && (
+            <li key={tracking.length - 1} className="" style={{ marginLeft: '', position: 'relative' }}>
+              <span className="absolute w-2 h-2 ring ring-gray-500 rounded-full left-[-0.2rem]"></span>
+              <div className="ml-4 text-left">
+                <h3 className=" leading-tight text-gray-500">{lastItem.label}</h3>
+                <p className="text-xs">Delivery expected by {lastItem.date}</p>
+              </div>
+            </li>
+          )}
+        </ol>
       </div>
     </div>
   );
