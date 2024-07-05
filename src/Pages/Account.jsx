@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 export const Account = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-6 sm:py-12 text-gray-600">
-      <div className="max-w-4xl w-full p-8 pt-24">
+    <div className="min-h-screen flex flex-col items-center justify-center py-6 sm:py-12 text-gray-600 sm:text-base text-xs">
+      <div className="max-w-4xl w-full sm:p-8 p-4 pt-24">
         <div className="flex justify-evenly">
             <div className="flex flex-col gap-14 justify-start">
                 {/* Account Details */}
