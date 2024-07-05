@@ -81,7 +81,7 @@ export const Navbar = () => {
             <Link to="/account" className="text-black font-light">
               Account
             </Link>
-            <Link to="/login" className="text-black font-light">
+            <Link to="/wishlist" className="text-black font-light">
               Wishlist
             </Link>
           </li>
@@ -177,11 +177,12 @@ export const Navbar = () => {
           <Link to="/orders" className={`font-light ${textColor}`}>
             Track your order
           </Link>
-          <a href="#">
+          <Link to="/wishlist">
             <div className="flex justify-center">
               <CiHeart className={`w-4 h-4 md:w-6 md:h-6 ${textColor}`} />
             </div>
-          </a>
+          </Link>
+
           <a
             href="#"
             className={`flex items-center space-x-2 md:space-x-3 font-light ${textColor}`}
