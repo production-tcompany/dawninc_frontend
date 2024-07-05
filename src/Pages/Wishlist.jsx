@@ -23,14 +23,14 @@ export const Wishlist = () => {
     },
   ];
   return (
-    <div className="max-w-full mx-auto p-16 mt-44">
+    <div className="max-w-full mx-auto p-8  pt-44 sm:p-20 sm:pt-44">
       <div className="flex justify-between">
         <h1 className="text-2xl font-normal mb-4">Wishlist</h1>
         <button className="text-grey-900 mb-4">Remove All</button>
       </div>
 
       {items.map((item, index) => (
-        <WishlistItem key={index} item={item} />
+        <WishlistItem index={index} item={item} />
       ))}
     </div>
   );
