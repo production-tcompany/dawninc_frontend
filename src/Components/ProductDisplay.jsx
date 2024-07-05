@@ -6,8 +6,17 @@ export const ProductDisplay = () => {
   return (
     <div className="pt-28">
       <div className="flex flex-col md:flex-row p-8">
+        {/* Product Image mobile */}
+        <div className="w-full md:w-1/2 md:hidden">
+          <img
+            src="https://i.pinimg.com/236x/7c/a6/6b/7ca66b1bfcfb87ea2e0387b375776d0b.jpg"
+            alt="Grey Normal Tees"
+            className="w-full  shadow-lg"
+          />
+        </div>
+
         {/* Product Details */}
-        <div className="w-full md:w-1/2 outline outline-offset-2 outline-grey-900 p-8">
+        <div className="w-full md:w-1/2  p-8">
           <div className="text-sm text-gray-500">
             Home / Store / Grey Normal Tees
           </div>
@@ -71,7 +80,7 @@ export const ProductDisplay = () => {
         </div>
 
         {/* Product Image */}
-        <div className="w-full md:w-1/2 md:mt-0 pl-4 ">
+        <div className="w-full md:w-1/2 md:mt-0 pl-4 hidden lg:block ">
           <img
             src="https://i.pinimg.com/236x/7c/a6/6b/7ca66b1bfcfb87ea2e0387b375776d0b.jpg"
             alt="Grey Normal Tees"
