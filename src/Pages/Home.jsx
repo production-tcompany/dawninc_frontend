@@ -6,23 +6,27 @@ export const Home = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background video for larger screens */}
-      <video
-        src={desktopVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute w-full h-full object-cover hidden md:block"
-      />
+      <a href="/collections" className="absolute w-full h-full">
+        <video
+          src={desktopVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute w-full h-full object-cover hidden md:block"
+        />
+      </a>
       {/* Background video for mobile screens */}
-      <video
-        src={mobileVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute w-full h-full object-cover block md:hidden"
-      />
+      <a href="/collections" className="absolute w-full h-full">
+        <video
+          src={mobileVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute w-full h-full object-cover block md:hidden"
+        />
+      </a>
     </div>
   );
 };
