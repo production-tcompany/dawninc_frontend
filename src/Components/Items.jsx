@@ -37,19 +37,19 @@ export const Items = ({ category }) => {
     <>
       {products.map((product) => (
         <Link key={product.id} to={`/product/${product.id}`} style={{ textDecoration: "none" }}>
-          <div className="group relativept-24">
+          <div className="group relative h-[530px]">
           <div className="relative">
                 <img
                   onClick={() => window.scrollTo(0, 0)}
                   src={product.image[0]}
                   alt={product.name}
-                  className="h-full w-full object-cover object-center lg:h-full lg:w-full transition-opacity duration-300 group-hover:opacity-0"
+                  className="h-[500px] object-cover object-center transition-opacity duration-300 group-hover:opacity-0"
                 />
                 <img
                   onClick={() => window.scrollTo(0, 0)}
                   src={product.image[1]}
                   alt={product.name}
-                  className="absolute top-0 left-0 h-full w-full object-cover object-center lg:h-full lg:w-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                  className="absolute top-0 left-0 h-[500px] object-cover object-center transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                 />
               </div>
             <div className="mt-4 flex justify-center">

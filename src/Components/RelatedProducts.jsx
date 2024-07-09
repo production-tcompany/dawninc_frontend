@@ -4,8 +4,8 @@ export const RelatedProducts = () => {
   const products = [];
 
   return (
-    <div className="p-6">
-      <h4 className="text-3xl font-normal mt-12">People also bought</h4>
+    <div className="p-6 px-14">
+      <h4 className="text-xl md:text-3xl font-normal mt-12 ">People also bought</h4>
       <div className="mt-4 overflow-x-auto no-scrollbar">
         {products.length === 0 ? (
           <div>No products available</div>

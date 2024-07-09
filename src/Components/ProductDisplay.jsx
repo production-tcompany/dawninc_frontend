@@ -26,6 +26,7 @@ export const ProductDisplay = ({ productId }) => {
   useEffect(() => {
     // Simulate fetching product details based on the product ID
     const fetchProduct =  () => {
+
       // Use the sample data
       setProduct(sampleProductData);
     };
@@ -45,27 +46,27 @@ export const ProductDisplay = ({ productId }) => {
     <div className="pt-28">
       <div className="flex flex-col justify-evenly md:flex-row p-8 ">
         {/* Product Image mobile */}
-        <div className="w-full md:w-1/2 md:hidden">
+        <div className="md:w-1/2 md:hidden flex justify-center ">
           <img
             src={product.image[currentImageIndex]} // Use product image from state
             alt={product.name} // Use product name from state
-            className="w-full h-auto shadow-lg"
+            className="h-96 shadow-lg "
             onClick={handleImageClick} // Change image on click
           />
         </div>
 
         {/* Product Details */}
-        <div className="w-full md:w-1/2 p-8">
+        <div className="w-full md:w-1/2 px-8 py-4">
           <div className="text-sm text-gray-500">
             Home / Store / {product.name}
           </div>
-          <div className="flex justify-between mt-12">
-            <h1 className="text-3xl font-bold">{product.name}</h1>
-            <CiHeart className="w-4 h-4 md:w-6 md:h-6 text-black" />
+          <div className="flex justify-between mt-4">
+            <h1 className="text-xl md:text-2xl">{product.name}</h1>
+            <CiHeart className="w-6 h-6 text-black" />
           </div>
 
-          <div className="text-xl font-semibold mt-4">₹{product.price}</div>
-          <div className="text-grey-500 mt-6">Rating: {product.rating}</div>
+          <div className="text-xl mt-4">₹{product.price}</div>
+          <div className="text-grey-500 mt-4">Rating: {product.rating}</div>
 
           {/* Size Options */}
           <div className="mt-4">
@@ -126,7 +127,7 @@ export const ProductDisplay = ({ productId }) => {
           <img
             src={product.image[currentImageIndex]} // Use product image from state
             alt={product.name} // Use product name from state
-            className="w-full h-auto shadow-lg"
+            className="lg:h-[530px] h-96 shadow-lg"
             onClick={handleImageClick} // Change image on click
           />
         </div>
