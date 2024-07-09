@@ -7,7 +7,7 @@ const sampleProducts = {
     {
       id: "1",
       name: "Light Project Hoodie V1",
-      price: 1000,
+      price: 1799,
       image: [
         "https://drive.google.com/thumbnail?id=1mqPyPd908ConYnynEWQYpdmGK6bxcRVG&sz=w1000",
         "https://drive.google.com/thumbnail?id=1-LppYEgUplrZguQIbFCMlnmcQWikHEIb&sz=w1000",
@@ -37,8 +37,8 @@ export const Items = ({ category }) => {
     <>
       {products.map((product) => (
         <Link key={product.id} to={`/product/${product.id}`} style={{ textDecoration: "none" }}>
-          <div className="group relative pt-24">
-          <div className="relative h-96 w-96">
+          <div className="group relativept-24">
+          <div className="relative">
                 <img
                   onClick={() => window.scrollTo(0, 0)}
                   src={product.image[0]}
@@ -54,11 +54,11 @@ export const Items = ({ category }) => {
               </div>
             <div className="mt-4 flex justify-center">
               <div>
-                <h3 className="text-sm text-gray-900">            
+                <h3 className="text-gray-900">            
                   <span aria-hidden="true" className="absolute inset-0" />
                   {product.name}               
                 </h3>
-                <p className="mt-1 text-sm text-gray-900">₹{product.price}</p>
+                <p className="mt-1 text-gray-900">₹{product.price}</p>
               </div>
             </div>
             <div aria-label="Choose a color" className="mt-4 flex justify-center items-center">

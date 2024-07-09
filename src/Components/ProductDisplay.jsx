@@ -6,7 +6,7 @@ import { CiHeart } from "react-icons/ci";
 const sampleProductData = {
   id: "1",
   name: "Light Project Hoodie V1",
-  price: 1000,
+  price: 1799,
   image: [
     "https://drive.google.com/thumbnail?id=1mqPyPd908ConYnynEWQYpdmGK6bxcRVG&sz=w1000",
     "https://drive.google.com/thumbnail?id=1-LppYEgUplrZguQIbFCMlnmcQWikHEIb&sz=w1000",
@@ -14,7 +14,7 @@ const sampleProductData = {
     "https://drive.google.com/thumbnail?id=1zf4AhxUbaAM2N-KlZ7nOq3YJYXjLhSCr&sz=w1000",
   ],
   rating: "",
-  sizes: ["S", "M", "L", "XL", "XXL"],
+  sizes: ["S", "M", "L"],
   color: "Black",
   colorCode: "#000000",
 };
@@ -25,10 +25,7 @@ export const ProductDisplay = ({ productId }) => {
 
   useEffect(() => {
     // Simulate fetching product details based on the product ID
-    const fetchProduct = async () => {
-      // Simulate a delay for fetching data
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      
+    const fetchProduct =  () => {
       // Use the sample data
       setProduct(sampleProductData);
     };
