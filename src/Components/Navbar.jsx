@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { BsCart, BsFillTriangleFill } from "react-icons/bs";
 import { HiMenuAlt4 } from "react-icons/hi";
-import { ShopContext } from "../Context/ShopContext";
 import { Cart } from "../Util/Cart";
 import logo from "../Assets/LOGO.png";
 
@@ -43,7 +42,6 @@ export const Navbar = () => {
   const textColor = isHomePage ? "text-white" : "text-black";
 
 
-  const { open, setOpen } = useContext(ShopContext);
 
   const handleLinkClick = () => {
     setIsSidebarOpen(false);
@@ -56,9 +54,9 @@ export const Navbar = () => {
         <button onClick={toggleSidebar}>
           <HiMenuAlt4 className={`w-8 h-8 ${textColor}`} />
         </button>
-        <Link to="/" className="flex justify-center">
+        <div className="flex justify-center">
           <img src={logo} alt="Logo" className="h-24" />
-        </Link>
+        </div>
 
         <a href="/login">
           <BsCart className={`w-6 h-6 ${textColor}`}/>

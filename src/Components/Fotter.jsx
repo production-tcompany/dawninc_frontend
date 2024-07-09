@@ -18,8 +18,8 @@ export const Fotter = () => {
             </div>
             {openSection === 'support' && (
               <ul className="space-y-2 mt-2">
-                <li><a href="#" className="text-gray-600 text-xs">Help</a></li>
-                <li><a href="#" className="text-gray-600 text-xs">FAQs</a></li>
+                <li><a href="/" className="text-gray-600 text-xs">Help</a></li>
+                <li><a href="/" className="text-gray-600 text-xs">FAQs</a></li>
               </ul>
             )}
           </div>
@@ -30,8 +30,8 @@ export const Fotter = () => {
             </div>
             {openSection === 'legal' && (
               <ul className="space-y-2 mt-2">
-                <li><a href="#" className="text-gray-600 text-xs">Terms & Conditions</a></li>
-                <li><a href="#" className="text-gray-600 text-xs">Privacy Policy</a></li>
+                <li><a href="/" className="text-gray-600 text-xs">Terms & Conditions</a></li>
+                <li><a href="/" className="text-gray-600 text-xs">Privacy Policy</a></li>
               </ul>
             )}
           </div>
@@ -43,8 +43,8 @@ export const Fotter = () => {
             {openSection === 'social' && (
               <ul className="space-y-2 mt-2">
                 <li><a href="https://www.instagram.com/dawninc?igsh=cjZ5endlMTAyZDZi" className="text-gray-600 text-xs">Instagram</a></li>
-                <li><a href="#" className="text-gray-600 text-xs">Facebook</a></li>
-                <li><a href="#" className="text-gray-600 text-xs">X</a></li>
+                <li><a href="/" className="text-gray-600 text-xs">Facebook</a></li>
+                <li><a href="/" className="text-gray-600 text-xs">X</a></li>
               </ul>
             )}
           </div>
@@ -53,30 +53,30 @@ export const Fotter = () => {
           <div className="text-center">
             <h3 className="text-sm font-normal mb-2">Support</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-600 text-xs">Help</a></li>
-              <li><a href="#" className="text-gray-600 text-xs">FAQs</a></li>
+              <li><a href="/" className="text-gray-600 text-xs">Help</a></li>
+              <li><a href="/" className="text-gray-600 text-xs">FAQs</a></li>
             </ul>
           </div>
           <div className="text-center">
             <h3 className="text-sm font-normal mb-2">Company</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-600 text-xs">About</a></li>
-              <li><a href="#" className="text-gray-600 text-xs">Contact</a></li>
+              <li><a href="/" className="text-gray-600 text-xs">About</a></li>
+              <li><a href="/" className="text-gray-600 text-xs">Contact</a></li>
             </ul>
           </div>
           <div className="text-center">
             <h3 className="text-sm font-normal mb-2">Legal</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-600 text-xs">Terms & Conditions</a></li>
-              <li><a href="#" className="text-gray-600 text-xs">Privacy Policy</a></li>
+              <li><a href="/" className="text-gray-600 text-xs">Terms & Conditions</a></li>
+              <li><a href="/" className="text-gray-600 text-xs">Privacy Policy</a></li>
             </ul>
           </div>
           <div className="text-center">
             <h3 className="text-sm font-normal mb-2">Social</h3>
             <ul className="space-y-2">
               <li><a href="https://www.instagram.com/dawninc?igsh=cjZ5endlMTAyZDZi" className="text-gray-600 text-xs">Instagram</a></li>
-              <li><a href="#" className="text-gray-600 text-xs">Facebook</a></li>
-              <li><a href="#" className="text-gray-600 text-xs">X</a></li>
+              <li><a href="/" className="text-gray-600 text-xs">Facebook</a></li>
+              <li><a href="/" className="text-gray-600 text-xs">X</a></li>
             </ul>
           </div>
         </div>

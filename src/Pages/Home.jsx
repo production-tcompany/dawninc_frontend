@@ -1,6 +1,6 @@
 import React from "react";
-import desktopVideo from "../Assets/website.mov";
-import mobileVideo from "../Assets/mobile.mov";
+import desktopVideo from "../Assets/web_opt.mp4";
+import mobileVideo from "../Assets/mob_opt.mp4";
 
 export const Home = () => {
   return (

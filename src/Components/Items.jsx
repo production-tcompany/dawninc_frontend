@@ -52,13 +52,11 @@ export const Items = ({ category }) => {
                   className="absolute top-0 left-0 h-full w-full object-cover object-center lg:h-full lg:w-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                 />
               </div>
-            <div className="mt-4 flex justify-between">
+            <div className="mt-4 flex justify-center">
               <div>
-                <h3 className="text-sm text-gray-900">
-                  <a href="#">
-                    <span aria-hidden="true" className="absolute inset-0" />
-                    {product.name}
-                  </a>
+                <h3 className="text-sm text-gray-900">            
+                  <span aria-hidden="true" className="absolute inset-0" />
+                  {product.name}               
                 </h3>
                 <p className="mt-1 text-sm text-gray-900">₹{product.price}</p>
               </div>
