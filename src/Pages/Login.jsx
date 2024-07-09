@@ -4,7 +4,13 @@ import { HiArrowLongRight } from "react-icons/hi2";
 
 export const Login = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen p-10">
+    <div className="flex flex-col items-center justify-center min-h-screen p-10 pt-28">
+      {/* Page under construction message */}
+      <div className="bg-yellow-200 text-yellow-800 p-4 rounded-md mb-8">
+        <h2 className="text-lg font-bold">Page Under Construction</h2>
+        <p>We are working hard to bring you this feature. Stay tuned!</p>
+      </div>
+
       <div className="w-full max-w-xs">
         <h1 className="text-lg mb-10 text-gray-700 underline underline-offset-2">
             Log in

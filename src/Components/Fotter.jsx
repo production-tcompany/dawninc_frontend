@@ -42,7 +42,7 @@ export const Fotter = () => {
             </div>
             {openSection === 'social' && (
               <ul className="space-y-2 mt-2">
-                <li><a href="#" className="text-gray-600 text-xs">Instagram</a></li>
+                <li><a href="https://www.instagram.com/dawninc?igsh=cjZ5endlMTAyZDZi" className="text-gray-600 text-xs">Instagram</a></li>
                 <li><a href="#" className="text-gray-600 text-xs">Facebook</a></li>
                 <li><a href="#" className="text-gray-600 text-xs">X</a></li>
               </ul>
@@ -74,7 +74,7 @@ export const Fotter = () => {
           <div className="text-center">
             <h3 className="text-sm font-normal mb-2">Social</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-600 text-xs">Instagram</a></li>
+              <li><a href="https://www.instagram.com/dawninc?igsh=cjZ5endlMTAyZDZi" className="text-gray-600 text-xs">Instagram</a></li>
               <li><a href="#" className="text-gray-600 text-xs">Facebook</a></li>
               <li><a href="#" className="text-gray-600 text-xs">X</a></li>
             </ul>

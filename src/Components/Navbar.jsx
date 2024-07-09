@@ -42,8 +42,12 @@ export const Navbar = () => {
   const isHomePage = location.pathname === "/";
   const textColor = isHomePage ? "text-white" : "text-black";
 
-  //cart_context
+
   const { open, setOpen } = useContext(ShopContext);
+
+  const handleLinkClick = () => {
+    setIsSidebarOpen(false);
+  };
 
   return (
     <>
@@ -56,12 +60,9 @@ export const Navbar = () => {
           <img src={logo} alt="Logo" className="h-24" />
         </Link>
 
-        <BsCart
-          onClick={() => {
-            setOpen(true);
-          }}
-          className={`w-6 h-6 ${textColor}`}
-        />
+        <a href="/login">
+          <BsCart className={`w-6 h-6 ${textColor}`}/>
+        </a>
       </nav>
 
       {/* Side Navigation Bar */}
@@ -73,20 +74,20 @@ export const Navbar = () => {
       >
         <ul className="flex flex-col items-center space-y-12 mt-8 py-20">
           <li>
-            <Link to="/" className="text-black font-light">
+            <Link to="/" onClick={handleLinkClick} className="text-black font-light">
               Home
             </Link>
           </li>
           <li className="flex justify-evenly space-x-4 w-full px-4">
-            <Link to="/account" className="text-black font-light">
+            <Link to="/login" onClick={handleLinkClick}  className="text-black font-light">
               Account
             </Link>
-            <Link to="/wishlist" className="text-black font-light">
+            <Link to="/login" onClick={handleLinkClick} className="text-black font-light">
               Wishlist
             </Link>
           </li>
           <li>
-            <Link to="/orders" className="text-black font-light">
+            <Link to="/login" onClick={handleLinkClick} className="text-black font-light">
               Track your order
             </Link>
           </li>
@@ -104,26 +105,26 @@ export const Navbar = () => {
             </button>
             {isSidebarDropdownOpen && (
               <div className="absolute left-0 flex flex-col space-y-2 mt-2 p-4 bg-white">
-                <Link to="/collections/" className="text-black font-light">
+                <Link to="/collections/shirts" onClick={handleLinkClick} className="text-black font-light">
                   Shirts
                 </Link>
-                <Link to="/collections/" className="text-black font-light">
+                <Link to="/collections/tshirts" onClick={handleLinkClick} className="text-black font-light">
                   T-shirts
                 </Link>
-                <Link to="/collections/" className="text-black font-light">
+                <Link to="/collections/hoodies" onClick={handleLinkClick} className="text-black font-light">
                   Hoodies
                 </Link>
-                <Link to="/collections/" className="text-black font-light">
+                <Link to="/collections/pants" onClick={handleLinkClick} className="text-black font-light">
                   Pants
                 </Link>
               </div>
             )}
           </li>
           <li className="absolute bottom-6 left-0 w-full flex flex-col items-center space-y-4 border-t-2 pt-6">
-            <Link to="/help" className="text-black font-light">
+            <Link to="/" onClick={handleLinkClick} className="text-black font-light">
               Help
             </Link>
-            <Link to="/faq" className="text-black font-light">
+            <Link to="/" onClick={handleLinkClick} className="text-black font-light">
               FAQs
             </Link>
           </li>
@@ -157,14 +158,14 @@ export const Navbar = () => {
                   }
                 }}
               >
-                <Link to="/collections/">Shirts</Link>
-                <Link to="/collections/">T-shirts</Link>
-                <Link to="/collections/">Hoodies</Link>
-                <Link to="/collections/">Pants</Link>
+                <Link to="/collections/shirts">Shirts</Link>
+                <Link to="/collections/tshirts">T-shirts</Link>
+                <Link to="/collections/hoodies">Hoodies</Link>
+                <Link to="/collections/pants">Pants</Link>
               </div>
             )}
           </div>
-          <Link to="/account" className={`font-light ${textColor}`}>
+          <Link to="/login" className={`font-light ${textColor}`}>
             Account
           </Link>
         </div>
@@ -174,20 +175,19 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center md:space-x-4 lg:space-x-24">
-          <Link to="/orders" className={`font-light ${textColor}`}>
+          <Link to="/login" className={`font-light ${textColor}`}>
             Track your order
           </Link>
-          <Link to="/wishlist">
+          <Link to="/login">
             <div className="flex justify-center">
               <CiHeart className={`w-4 h-4 md:w-6 md:h-6 ${textColor}`} />
             </div>
           </Link>
 
           <a
-            href="#"
+            href="/login"
             className={`flex items-center space-x-2 md:space-x-3 font-light ${textColor}`}
             onClick={() => {
-              setOpen(true);
             }}
           >
             <span>Shopping Cart</span>

@@ -24,8 +24,8 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/trackorders" element={<TrackOrder />} />
-          <Route path="/collections" element={<Collections />} />
-          <Route path="/product" element={<Product />} />
+          <Route path="/collections/:category" element={<Collections />} />
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
         <Fotter />
       </Router>
