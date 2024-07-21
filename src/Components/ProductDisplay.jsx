@@ -2,33 +2,50 @@ import React, { useEffect, useState } from "react";
 import { DetailsDropdown } from "../Util/DetailsDropdown";
 import { CiHeart } from "react-icons/ci";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-
-// Sample data for the product
-const sampleProductData = {
-  id: "1",
-  name: "Light Project Hoodie V1",
-  price: 1799,
-  image: [
-    "https://drive.google.com/thumbnail?id=1mqPyPd908ConYnynEWQYpdmGK6bxcRVG&sz=w1000",
-    "https://drive.google.com/thumbnail?id=1-LppYEgUplrZguQIbFCMlnmcQWikHEIb&sz=w1000",
-    "https://drive.google.com/thumbnail?id=1i5lTRONYWfWS4PdrVKoxs3ARewzw2TVI&sz=w1000",
-    "https://drive.google.com/thumbnail?id=1zf4AhxUbaAM2N-KlZ7nOq3YJYXjLhSCr&sz=w1000",
-  ],
-  rating: "",
-  sizes: ["S", "M", "L"],
-  color: "Black",
-  colorCode: "#000000",
-};
+import blue1 from "../Assets/productimage/BLUE 2.png";
+import blue2 from "../Assets/productimage/BLUE 3.png";
+import blue3 from "../Assets/productimage/IMG_7927.PNG";
 
 export const ProductDisplay = ({ productId }) => {
+  // Sample data for the product
+  const sampleProductData = [
+    {
+      id: "1",
+      name: "Light Project Hoodie V1",
+      price: 1799,
+      image: [
+        "https://drive.google.com/thumbnail?id=1mqPyPd908ConYnynEWQYpdmGK6bxcRVG&sz=w1000",
+        "https://drive.google.com/thumbnail?id=1-LppYEgUplrZguQIbFCMlnmcQWikHEIb&sz=w1000",
+        "https://drive.google.com/thumbnail?id=1i5lTRONYWfWS4PdrVKoxs3ARewzw2TVI&sz=w1000",
+        "https://drive.google.com/thumbnail?id=1zf4AhxUbaAM2N-KlZ7nOq3YJYXjLhSCr&sz=w1000",
+      ],
+      rating: "",
+      sizes: ["S", "M", "L"],
+      color: "Black",
+      colorCode: "#000000",
+    },
+    {
+      id: "2",
+      name: "Light Project Hoodie V2",
+      price: 1799,
+      image: [blue1, blue2, blue3],
+      rating: "",
+      sizes: ["S", "M", "L"],
+      color: "Blue",
+      colorCode: "#020140",
+    },
+  ];
   const [product, setProduct] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     // Simulate fetching product details based on the product ID
     const fetchProduct = () => {
-      // Use the sample data
-      setProduct(sampleProductData);
+      // Find the product with the matching ID
+      const foundProduct = sampleProductData.find(
+        (product) => product.id === productId
+      );
+      setProduct(foundProduct);
     };
 
     fetchProduct();
