@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DetailsDropdown } from "../Util/DetailsDropdown";
 import { CiHeart } from "react-icons/ci";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 // Sample data for the product
 const sampleProductData = {
@@ -25,8 +26,7 @@ export const ProductDisplay = ({ productId }) => {
 
   useEffect(() => {
     // Simulate fetching product details based on the product ID
-    const fetchProduct =  () => {
-
+    const fetchProduct = () => {
       // Use the sample data
       setProduct(sampleProductData);
     };
@@ -44,19 +44,29 @@ export const ProductDisplay = ({ productId }) => {
 
   return (
     <div className="pt-28">
-      <div className="flex flex-col justify-evenly md:flex-row p-8 ">
+      <div className="flex flex-col justify-evenly md:flex-row p-4 sm:p-0">
         {/* Product Image mobile */}
-        <div className="md:w-1/2 md:hidden flex justify-center ">
+        <div className="md:w-1/2 md:hidden flex justify-center relative">
+          <IoIosArrowBack
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
+            onClick={handleImageClick}
+            size={30}
+          />
           <img
             src={product.image[currentImageIndex]} // Use product image from state
             alt={product.name} // Use product name from state
-            className="h-96 shadow-lg "
+            className="max-h-full shadow-lg"
             onClick={handleImageClick} // Change image on click
+          />
+          <IoIosArrowForward
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
+            onClick={handleImageClick}
+            size={30}
           />
         </div>
 
         {/* Product Details */}
-        <div className="w-full md:w-1/2 px-8 py-4">
+        <div className="w-full md:w-1/2 md:px-8 md:py-4 px-0 pt-4 py-0">
           <div className="text-sm text-gray-500">
             Home / Store / {product.name}
           </div>
@@ -96,11 +106,11 @@ export const ProductDisplay = ({ productId }) => {
 
           {/* Action Buttons */}
           <div className="mt-6">
-            <button className="bg-black text-white px-6 py-3 rounded mr-4 w-full hover:bg-gray-800">
-              Buy Now
+            <button className="bg-white text-black px-6 py-3 outline outline-black  outline-1 rounded mr-4 w-full hover:bg-gray-800">
+              BUY NOW
             </button>
-            <button className="bg-black text-white mt-4 px-6 py-3 rounded mr-4 w-full hover:bg-gray-800">
-              Add to Cart
+            <button className="bg-white text-black mt-4 px-6 py-3 outline outline-black outline-1 rounded mr-4 w-full hover:bg-gray-800">
+              ADD TO CART
             </button>
           </div>
 
@@ -123,13 +133,27 @@ export const ProductDisplay = ({ productId }) => {
         </div>
 
         {/* Product Image */}
-        <div className="w-full md:w-1/3 md:mt-0 pl-4 hidden md:block">
-          <img
-            src={product.image[currentImageIndex]} // Use product image from state
-            alt={product.name} // Use product name from state
-            className="lg:h-[530px] h-96 shadow-lg"
-            onClick={handleImageClick} // Change image on click
-          />
+
+        <div className="w-full md:w-1/3 md:mt-0 pl-16 hidden md:block relative">
+          <div>
+            <IoIosArrowBack
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              onClick={handleImageClick}
+              size={30}
+            />
+
+            <img
+              src={product.image[currentImageIndex]} // Use product image from state
+              alt={product.name} // Use product name from state
+              className="lg:h-[530px] h-96 shadow-lg"
+              onClick={handleImageClick} // Change image on click
+            />
+            <IoIosArrowForward
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              onClick={handleImageClick}
+              size={30}
+            />
+          </div>
         </div>
       </div>
     </div>
