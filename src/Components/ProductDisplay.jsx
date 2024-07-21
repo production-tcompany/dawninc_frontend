@@ -123,10 +123,10 @@ export const ProductDisplay = ({ productId }) => {
 
           {/* Action Buttons */}
           <div className="mt-6">
-            <button className="bg-white text-black px-6 py-3 outline outline-black  outline-1 rounded mr-4 w-full hover:bg-gray-800">
+            <button className="bg-white text-black px-6 py-3 outline outline-black  outline-1 rounded mr-4 w-full hover:bg-gray-100">
               BUY NOW
             </button>
-            <button className="bg-white text-black mt-4 px-6 py-3 outline outline-black outline-1 rounded mr-4 w-full hover:bg-gray-800">
+            <button className="bg-white text-black mt-4 px-6 py-3 outline outline-black outline-1 rounded mr-4 w-full hover:bg-gray-100">
               ADD TO CART
             </button>
           </div>
