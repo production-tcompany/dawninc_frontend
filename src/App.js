@@ -13,20 +13,22 @@ import { TrackOrder } from "./Pages/TrackOrder"
 
 function App() {
   return (
-    <div className="relative min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/trackorders" element={<TrackOrder />} />
-          <Route path="/collections/:category" element={<Collections />} />
-          <Route path="/product/:id" element={<Product />} />
-        </Routes>
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/trackorders" element={<TrackOrder />} />
+            <Route path="/collections/:category" element={<Collections />} />
+            <Route path="/product/:id" element={<Product />} />
+          </Routes>
+        </div>
         <Fotter />
       </Router>
     </div>
