@@ -50,7 +50,7 @@ export const Navbar = () => {
   return (
     <>
       {/* Mobile View */}
-      <nav className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-8 py-6 md:hidden">
+      <nav className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-8 md:hidden">
         <button onClick={toggleSidebar}>
           <HiMenuAlt4 className={`w-8 h-8 ${textColor}`} />
         </button>
