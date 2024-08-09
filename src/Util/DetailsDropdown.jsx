@@ -14,7 +14,7 @@ export const DetailsDropdown = () => {
         onClick={toggleDropdown}
       >
         <span className="text-l font-semibold">Details</span>
-        <span className="text-l">{isOpen ? "▲" : "▼"}</span>
+        <span className="text-3xl font-semibold">{isOpen ? "-" : "+"}</span>
       </div>
 
       {/* Dropdown Content */}

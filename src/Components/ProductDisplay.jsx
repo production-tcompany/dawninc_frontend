@@ -63,7 +63,7 @@ export const ProductDisplay = ({ productId }) => {
     <div className="pt-28">
       <div className="flex flex-col justify-evenly md:flex-row p-4 sm:p-0">
         {/* Product Image mobile */}
-        <div className="md:w-1/2 md:hidden flex justify-center relative">
+        <div className="md:w-1/2 md:hidden flex justify-center items-center relative h-[500px]">
           <IoIosArrowBack
             className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
             onClick={handleImageClick}
@@ -72,7 +72,7 @@ export const ProductDisplay = ({ productId }) => {
           <img
             src={product.image[currentImageIndex]} // Use product image from state
             alt={product.name} // Use product name from state
-            className="max-h-full shadow-lg"
+            className="h-full max-w-full object-contain" // Ensure image fits within the frame
             onClick={handleImageClick} // Change image on click
           />
           <IoIosArrowForward
@@ -89,7 +89,9 @@ export const ProductDisplay = ({ productId }) => {
           </div>
           <div className="flex justify-between mt-4">
             <h1 className="text-xl md:text-2xl">{product.name}</h1>
-            <CiHeart className="w-6 h-6 text-black" />
+            <a href="/login">
+              <CiHeart className="w-6 h-6 text-black hover:text-red-600" />
+            </a>
           </div>
 
           <div className="text-xl mt-4">₹{product.price}</div>
@@ -102,7 +104,7 @@ export const ProductDisplay = ({ productId }) => {
               {product.sizes.map((size) => (
                 <button
                   key={size}
-                  className="w-12 h-8 border border-gray-300 px-4 py-2 mr-2 flex items-center justify-center hover:bg-gray-200"
+                  className="w-12 h-8 border border-gray-300 px-4 py-2 mr-2 flex items-center justify-center hover:bg-black hover:text-white"
                 >
                   {size}
                 </button>
@@ -123,10 +125,10 @@ export const ProductDisplay = ({ productId }) => {
 
           {/* Action Buttons */}
           <div className="mt-6">
-            <button className="bg-white text-black px-6 py-3 outline outline-black  outline-1 rounded mr-4 w-full hover:bg-gray-100">
+            <button className="bg-white text-black px-6 py-3 outline outline-black  outline-1 rounded mr-4 w-full hover:bg-black hover:text-white">
               BUY NOW
             </button>
-            <button className="bg-white text-black mt-4 px-6 py-3 outline outline-black outline-1 rounded mr-4 w-full hover:bg-gray-100">
+            <button className="bg-white text-black mt-4 px-6 py-3 outline outline-black outline-1 rounded mr-4 w-full hover:bg-black hover:text-white">
               ADD TO CART
             </button>
           </div>
@@ -152,9 +154,9 @@ export const ProductDisplay = ({ productId }) => {
         {/* Product Image */}
 
         <div className="w-full md:w-1/3 md:mt-0 pl-16 hidden md:block relative">
-          <div>
+          <div className="relative">
             <IoIosArrowBack
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
               onClick={handleImageClick}
               size={30}
             />
@@ -162,11 +164,12 @@ export const ProductDisplay = ({ productId }) => {
             <img
               src={product.image[currentImageIndex]} // Use product image from state
               alt={product.name} // Use product name from state
-              className="lg:h-[530px] h-96 shadow-lg"
+              className="w-full lg:h-[530px] h-96 object-contain" // Full width, fixed height
               onClick={handleImageClick} // Change image on click
             />
+
             <IoIosArrowForward
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
               onClick={handleImageClick}
               size={30}
             />

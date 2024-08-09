@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { BsCart, BsFillTriangleFill } from "react-icons/bs";
@@ -41,8 +41,6 @@ export const Navbar = () => {
   const isHomePage = location.pathname === "/";
   const textColor = isHomePage ? "text-white" : "text-black";
 
-
-
   const handleLinkClick = () => {
     setIsSidebarOpen(false);
   };
@@ -50,16 +48,17 @@ export const Navbar = () => {
   return (
     <>
       {/* Mobile View */}
-      <nav className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-8 md:hidden">
+      <nav className=" fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-8 md:hidden bg-white">
         <button onClick={toggleSidebar}>
           <HiMenuAlt4 className={`w-8 h-8 ${textColor}`} />
         </button>
-        <div className="flex justify-center">
+
+        <a href="/" className="flex justify-center">
           <img src={logo} alt="Logo" className="h-24" />
-        </div>
+        </a>
 
         <a href="/login">
-          <BsCart className={`w-6 h-6 ${textColor}`}/>
+          <BsCart className={`w-6 h-6 mb-1 ${textColor}`} />
         </a>
       </nav>
 
@@ -72,20 +71,36 @@ export const Navbar = () => {
       >
         <ul className="flex flex-col items-center space-y-12 mt-8 py-20">
           <li>
-            <Link to="/" onClick={handleLinkClick} className="text-black font-light">
+            <Link
+              to="/"
+              onClick={handleLinkClick}
+              className="text-black font-light"
+            >
               Home
             </Link>
           </li>
           <li className="flex justify-evenly space-x-4 w-full px-4">
-            <Link to="/login" onClick={handleLinkClick}  className="text-black font-light">
+            <Link
+              to="/login"
+              onClick={handleLinkClick}
+              className="text-black font-light"
+            >
               Account
             </Link>
-            <Link to="/login" onClick={handleLinkClick} className="text-black font-light">
+            <Link
+              to="/login"
+              onClick={handleLinkClick}
+              className="text-black font-light"
+            >
               Wishlist
             </Link>
           </li>
           <li>
-            <Link to="/login" onClick={handleLinkClick} className="text-black font-light">
+            <Link
+              to="/login"
+              onClick={handleLinkClick}
+              className="text-black font-light"
+            >
               Track your order
             </Link>
           </li>
@@ -103,26 +118,50 @@ export const Navbar = () => {
             </button>
             {isSidebarDropdownOpen && (
               <div className="absolute left-0 flex flex-col space-y-2 mt-2 p-4 bg-white">
-                <Link to="/collections/shirts" onClick={handleLinkClick} className="text-black font-light">
+                <Link
+                  to="/collections/shirts"
+                  onClick={handleLinkClick}
+                  className="text-black font-light"
+                >
                   Shirts
                 </Link>
-                <Link to="/collections/tshirts" onClick={handleLinkClick} className="text-black font-light">
+                <Link
+                  to="/collections/tshirts"
+                  onClick={handleLinkClick}
+                  className="text-black font-light"
+                >
                   T-shirts
                 </Link>
-                <Link to="/collections/hoodies" onClick={handleLinkClick} className="text-black font-light">
+                <Link
+                  to="/collections/hoodies"
+                  onClick={handleLinkClick}
+                  className="text-black font-light"
+                >
                   Hoodies
                 </Link>
-                <Link to="/collections/pants" onClick={handleLinkClick} className="text-black font-light">
+                <Link
+                  to="/collections/pants"
+                  onClick={handleLinkClick}
+                  className="text-black font-light"
+                >
                   Pants
                 </Link>
               </div>
             )}
           </li>
           <li className="absolute bottom-6 left-0 w-full flex flex-col items-center space-y-4 border-t-2 pt-6">
-            <Link to="/" onClick={handleLinkClick} className="text-black font-light">
+            <Link
+              to="/"
+              onClick={handleLinkClick}
+              className="text-black font-light"
+            >
               Help
             </Link>
-            <Link to="/" onClick={handleLinkClick} className="text-black font-light">
+            <Link
+              to="/"
+              onClick={handleLinkClick}
+              className="text-black font-light"
+            >
               FAQs
             </Link>
           </li>
@@ -130,7 +169,7 @@ export const Navbar = () => {
       </div>
 
       {/* Larger Screens View */}
-      <nav className="hidden md:flex fixed top-0 left-0 right-0 z-10 items-center justify-between px-4 py-4 md:px-12 md:py-8">
+      <nav className="hidden md:flex fixed top-0 left-0 right-0 z-30 items-center justify-between px-4 py-4 md:px-8 md:py-8 bg-white">
         <div className="flex items-center md:space-x-4 lg:space-x-24">
           <Link to="/" className={`font-light ${textColor}`}>
             Home
@@ -168,9 +207,12 @@ export const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex justify-center absolute left-1/2 transform -translate-x-1/2">
-          <img src={logo} alt="Logo" className="h-10 md:h-28" />
-        </div>
+        <a
+          href="/"
+          className="flex justify-center absolute left-1/2 transform -translate-x-1/2"
+        >
+          <img src={logo} alt="Logo" className="h-10 md:h-24" />
+        </a>
 
         <div className="flex items-center md:space-x-4 lg:space-x-24">
           <Link to="/login" className={`font-light ${textColor}`}>
@@ -185,8 +227,7 @@ export const Navbar = () => {
           <a
             href="/login"
             className={`flex items-center space-x-2 md:space-x-3 font-light ${textColor}`}
-            onClick={() => {
-            }}
+            onClick={() => {}}
           >
             <span>Shopping Cart</span>
             <BsCart
