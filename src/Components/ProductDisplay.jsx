@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DetailsDropdown } from "../Util/DetailsDropdown";
 import { CiHeart } from "react-icons/ci";
+import { HiArrowLeft } from "react-icons/hi2";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import blue1 from "../Assets/productimage/BLUE 2.png";
 import blue2 from "../Assets/productimage/BLUE 3.png";
 import blue3 from "../Assets/productimage/IMG_7927.PNG";
 
 export const ProductDisplay = ({ productId }) => {
+  let navigate = useNavigate();
   // Sample data for the product
   const sampleProductData = [
     {
@@ -54,6 +57,9 @@ export const ProductDisplay = ({ productId }) => {
   const handleImageClick = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % product.image.length);
   };
+  const handleLeftImageClick = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % product.image.length);
+  };
 
   if (!product) {
     return <div>Loading...</div>;
@@ -63,27 +69,45 @@ export const ProductDisplay = ({ productId }) => {
     <div className="pt-28">
       <div className="flex flex-col justify-evenly md:flex-row p-4 sm:p-0">
         {/* Product Image mobile */}
-        <div className="md:w-1/2 md:hidden flex justify-center items-center relative h-[500px]">
-          <IoIosArrowBack
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
-            onClick={handleImageClick}
-            size={30}
-          />
-          <img
-            src={product.image[currentImageIndex]} // Use product image from state
-            alt={product.name} // Use product name from state
-            className="h-full max-w-full object-contain" // Ensure image fits within the frame
-            onClick={handleImageClick} // Change image on click
-          />
-          <IoIosArrowForward
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
-            onClick={handleImageClick}
-            size={30}
-          />
+        <div>
+          <div>
+            <button className=" md:hidden">
+              <HiArrowLeft
+                onClick={() => navigate(-1)}
+                className="w-6 h-6 ml-2 mb-2"
+              />
+            </button>
+          </div>
+          <div className="md:w-1/2 md:hidden flex justify-center items-center relative h-[500px]">
+            <IoIosArrowBack
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              onClick={handleLeftImageClick}
+              size={30}
+            />
+            <img
+              src={product.image[currentImageIndex]} // Use product image from state
+              alt={product.name} // Use product name from state
+              className="h-full max-w-full object-contain" // Ensure image fits within the frame
+              onClick={handleImageClick} // Change image on click
+            />
+            <IoIosArrowForward
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              onClick={handleImageClick}
+              size={30}
+            />
+          </div>
         </div>
 
         {/* Product Details */}
         <div className="w-full md:w-1/2 md:px-8 md:py-4 px-0 pt-4 py-0">
+          <div>
+            <button className="hidden md:block">
+              <HiArrowLeft
+                onClick={() => navigate(-1)}
+                className="w-6 h-6 mr-2 mb-2"
+              />
+            </button>
+          </div>
           <div className="text-sm text-gray-500">
             Home / Store / {product.name}
           </div>
@@ -157,7 +181,7 @@ export const ProductDisplay = ({ productId }) => {
           <div className="relative">
             <IoIosArrowBack
               className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
-              onClick={handleImageClick}
+              onClick={handleLeftImageClick}
               size={30}
             />
 

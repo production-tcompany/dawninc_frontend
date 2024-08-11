@@ -4,7 +4,7 @@ import { CiHeart } from "react-icons/ci";
 import { BsCart, BsFillTriangleFill } from "react-icons/bs";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { Cart } from "../Util/Cart";
-import logo from "../Assets/LOGO.png";
+import logo from "../Assets/LOGO-red.png";
 
 export const Navbar = () => {
   const location = useLocation();
@@ -40,6 +40,7 @@ export const Navbar = () => {
 
   const isHomePage = location.pathname === "/";
   const textColor = isHomePage ? "text-white" : "text-black";
+  const navColor = isHomePage ? "bg-bg-transparent" : "bg-white";
 
   const handleLinkClick = () => {
     setIsSidebarOpen(false);
@@ -48,7 +49,9 @@ export const Navbar = () => {
   return (
     <>
       {/* Mobile View */}
-      <nav className=" fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-8 md:hidden ">
+      <nav
+        className={`fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-8 md:hidden ${navColor}`}
+      >
         <button onClick={toggleSidebar}>
           <HiMenuAlt4 className={`w-8 h-8 ${textColor}`} />
         </button>
@@ -169,7 +172,9 @@ export const Navbar = () => {
       </div>
 
       {/* Larger Screens View */}
-      <nav className="hidden md:flex fixed top-0 left-0 right-0 z-30 items-center justify-between px-4 py-4 md:px-8 md:py-8">
+      <nav
+        className={`hidden md:flex fixed top-0 left-0 right-0 z-30 items-center justify-between px-0 py-4 md:px-8 md:py-8 ${navColor}`}
+      >
         <div className="flex items-center md:space-x-4 lg:space-x-24">
           <Link to="/" className={`font-light ${textColor}`}>
             Home
@@ -211,7 +216,7 @@ export const Navbar = () => {
           href="/"
           className="flex justify-center absolute left-1/2 transform -translate-x-1/2"
         >
-          <img src={logo} alt="Logo" className="h-10 md:h-24" />
+          <img src={logo} alt="Logo" className="h-10 md:h-20" />
         </a>
 
         <div className="flex items-center md:space-x-4 lg:space-x-24">

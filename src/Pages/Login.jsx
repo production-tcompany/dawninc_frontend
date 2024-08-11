@@ -1,8 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { HiArrowLongRight } from "react-icons/hi2";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { HiArrowRight } from "react-icons/hi2";
 
 export const Login = () => {
+  const [emailPlaceholder, setEmailPlaceholder] = useState("Enter your email");
+  const [passwordPlaceholder, setPasswordPlaceholder] = useState(
+    "Enter your password"
+  );
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-10 pt-28">
       {/* Page under construction message */}
@@ -13,22 +17,25 @@ export const Login = () => {
 
       <div className="w-full max-w-xs">
         <h1 className="text-lg mb-10 text-gray-700 underline underline-offset-2">
-            Log in
-
+          Log in
         </h1>
         <form className="space-y-10">
           <div>
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full border-b-2 border-gray-700 outline-none py-2 text-gray-700 placeholder-gray-400"
+              className="w-full border-b-2 border-gray-700 outline-none py-2 text-gray-700 placeholder-black focus:placeholder-transparent focus:pl-2 transition-all"
+              onFocus={() => setEmailPlaceholder("")}
+              onBlur={() => setEmailPlaceholder("Enter your email")}
             />
           </div>
           <div>
             <input
               type="password"
               placeholder="Enter your password"
-              className="w-full border-b-2 border-gray-700 outline-none py-2 text-gray-700 placeholder-gray-400"
+              className="w-full border-b-2 border-gray-700 outline-none py-2 text-gray-700 placeholder-black focus:placeholder-transparent focus:pl-2 transition-all"
+              onFocus={() => setPasswordPlaceholder("")}
+              onBlur={() => setPasswordPlaceholder("Enter your password")}
             />
           </div>
           <div>
@@ -36,13 +43,16 @@ export const Login = () => {
               type="submit"
               className="flex items-center py-2 text-gray-700"
             >
-              <HiArrowLongRight className="w-10 h-10 mr-2" />
+              <HiArrowRight className="w-6 h-6 mr-2" />
               Log in
             </button>
           </div>
         </form>
         <div className="mt-4">
-          <Link to="/signup" className="text-gray-700 underline underline-offset-2">
+          <Link
+            to="/signup"
+            className="text-gray-700 underline underline-offset-2"
+          >
             Create Account
           </Link>
         </div>
