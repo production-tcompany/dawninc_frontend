@@ -48,7 +48,7 @@ export const Navbar = () => {
   return (
     <>
       {/* Mobile View */}
-      <nav className=" fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-8 md:hidden bg-white">
+      <nav className=" fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-8 md:hidden ">
         <button onClick={toggleSidebar}>
           <HiMenuAlt4 className={`w-8 h-8 ${textColor}`} />
         </button>
@@ -169,7 +169,7 @@ export const Navbar = () => {
       </div>
 
       {/* Larger Screens View */}
-      <nav className="hidden md:flex fixed top-0 left-0 right-0 z-30 items-center justify-between px-4 py-4 md:px-8 md:py-8 bg-white">
+      <nav className="hidden md:flex fixed top-0 left-0 right-0 z-30 items-center justify-between px-4 py-4 md:px-8 md:py-8">
         <div className="flex items-center md:space-x-4 lg:space-x-24">
           <Link to="/" className={`font-light ${textColor}`}>
             Home
