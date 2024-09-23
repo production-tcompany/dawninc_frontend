@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const DetailsDropdown = () => {
+export const DetailsDropdown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -20,16 +20,9 @@ export const DetailsDropdown = () => {
       {/* Dropdown Content */}
       {isOpen && (
         <div className="mt-4 text-gray-700">
-          <p>
-            The Seventh White layered tee is made from 100% cotton, a truly
-            innovative design created to achieve a two layered T-shirt look in
-            one garment. Featuring a double layered sleeve and a center back
-            seam, the silhouette is oversized and boxy. The garment also
-            features a raw hem on the short sleeve to create a contrast against
-            the longer sleeved layer beneath.
-          </p>
-          <p className="mt-2">100% cotton</p>
-          <p>Double layered sleeve</p>
+          <p>{props.details}</p>
+          {/*<p className="mt-2">100% cotton</p>
+          <p>Double layered sleeve</p>*/}
         </div>
       )}
     </div>

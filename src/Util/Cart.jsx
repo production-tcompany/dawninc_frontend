@@ -1,21 +1,43 @@
-import React, { useContext, Fragment } from "react";
+import React, { useContext, Fragment, useEffect, useState } from "react";
 
 import { ShopContext } from "../Context/ShopContext";
 import { Dialog, Transition } from "@headlessui/react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
+import { CartContext } from "../Context/CartContext";
+import { ProductContext } from "../Context/ProductContext";
+import { Toaster, toast } from "react-hot-toast";
 
 export const Cart = () => {
   const { open, setOpen } = useContext(ShopContext);
+  const { products } = useContext(ProductContext);
+  const { cartItems, updateQuantity, getCartAmount } = useContext(CartContext);
 
-  const products = [
-    { id: 1, name: "Grey Normal Tees", image: "path_to_grey_image" },
-    { id: 2, name: "Black Normal Tees", image: "path_to_black_image" },
-    { id: 3, name: "White Normal Tees", image: "path_to_white_image" },
-    { id: 4, name: "Grey Normal Tees", image: "path_to_grey_image" },
-  ];
+  const [cartData, setCartData] = useState([]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (products.length > 0) {
+      const tempData = [];
+      for (const items in cartItems) {
+        for (const item in cartItems[items]) {
+          if (cartItems[items][item] > 0) {
+            tempData.push({
+              _id: items,
+              size: item,
+              quantity: cartItems[items][item],
+            });
+          }
+        }
+      }
+      setCartData(tempData);
+    }
+  }, [cartItems, products]);
+
   return (
     <Transition.Root show={open} as={Fragment}>
+      <Toaster position="bottom-right" reverseOrder={false} />
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
@@ -42,9 +64,9 @@ export const Cart = () => {
                 leaveTo="translate-x-full"
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                  <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                  <div className="flex  h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                      <div className="flex items-start justify-between">
+                      <div className=" mt-16 flex items-start justify-between">
                         <Dialog.Title className="text-lg font-medium text-gray-900">
                           Shopping Cart
                         </Dialog.Title>
@@ -63,32 +85,34 @@ export const Cart = () => {
 
                       <div className="mt-8">
                         <div className="flow-root outline outline-offset-8 outline-grey-900">
-                          {/* {getTotalCartAmount() == 0 ? (
+                          {getCartAmount() == 0 ? (
                             <div className="flex justify-center items-center pt-20">
-                              <div className="flex justify-center items-center pt-20">
-                                <img
-                                  className="h-24 w-30 object-cover object-center"
-                                  src="https://www.clker.com/cliparts/8/B/c/H/6/H/movie-plate.svg"
-                                ></img>
-                              </div>
+                              <div className="flex justify-center items-center pt-20"></div>
                               <div className="flex justify-center items-center pt-20">
                                 <h2 className="font-bold text-black-600 hover:text-indigo-500">
-                                  Plate empty
+                                  Cart Empty
                                 </h2>
                               </div>
                             </div>
-                          ) : null} */}
+                          ) : null}
                           <ul
                             role="list"
                             className="-my-6 divide-y divide-gray-200 p-2 "
                           >
-                            {products.map((product) => {
+                            {cartData.map((item, index) => {
+                              const productData = products.find(
+                                (product) => product._id === item._id
+                              );
+                              if (!productData) {
+                                return null;
+                              }
+
                               return (
-                                <li key={product.id} className="flex py-6">
+                                <li key={index} className="flex py-6">
                                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                     <img
-                                      src={product.url}
-                                      alt={product.imageAlt}
+                                      src={productData.image[0]}
+                                      alt={productData.name}
                                       className="h-full w-full object-cover object-center"
                                     />
                                   </div>
@@ -97,25 +121,50 @@ export const Cart = () => {
                                     <div>
                                       <div className="flex justify-between text-base font-medium text-gray-900">
                                         <h3>
-                                          <a href={product.href}>
-                                            {product.name}
+                                          <a href={productData.name}>
+                                            {productData.name}
                                           </a>
                                         </h3>
-                                        <p className="ml-4">Rs.100</p>
+                                        <p className="ml-4">
+                                          Rs.{productData.price}
+                                        </p>
                                       </div>
-                                      <p className="mt-1 text-sm text-gray-500">
-                                        {product.color}
-                                      </p>
+                                      {/* <p className="mt-1 text-sm text-gray-500">
+                                        {productData.color}
+                                      </p> */}
                                     </div>
                                     <div className="flex flex-1 items-end justify-between text-sm">
-                                      <p className="text-gray-500">Size: </p>
+                                      <p className="text-gray-500">
+                                        Size:{item.size}{" "}
+                                      </p>
 
                                       <div className="flex">
+                                        <input
+                                          onChange={(e) =>
+                                            e.target.value === "" ||
+                                            e.target.value === "0"
+                                              ? null
+                                              : updateQuantity(
+                                                  item._id,
+                                                  item.size,
+                                                  Number(e.target.value)
+                                                )
+                                          }
+                                          className="border max-w-10 sm:max-w-20 px-1 ml-3 sm:px-2 py-1"
+                                          type="number"
+                                          min={1}
+                                          defaultValue={item.quantity}
+                                        />
+
                                         <button
                                           type="button"
-                                          onClick={() => {
-                                            //removeAllFromCart(product.ids);
-                                          }}
+                                          onClick={() =>
+                                            updateQuantity(
+                                              item._id,
+                                              item.size,
+                                              0
+                                            )
+                                          }
                                           className="font-medium text-grey-600 hover:text-grey-900"
                                         >
                                           Remove
@@ -127,14 +176,21 @@ export const Cart = () => {
                               );
                             })}
                           </ul>
-                          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                          <div className="border-t border-gray-200 px-4 py-6 sm:px-6 bottom-0.5">
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <p>Subtotal</p>
-                              <p>₹1000</p>
+                              <p>₹{getCartAmount()}</p>
                             </div>
 
                             <div className="mt-6">
-                              <button className="bg-black text-white px-6 py-3 rounded mr-4 w-full hover:bg-gray-800">
+                              <button
+                                onClick={() =>
+                                  cartItems
+                                    ? navigate("/placeorders")
+                                    : toast.error("Cart Empty")
+                                }
+                                className="bg-black text-white px-6 py-3 rounded mr-4 w-full hover:bg-gray-800"
+                              >
                                 Checkout
                               </button>
                             </div>

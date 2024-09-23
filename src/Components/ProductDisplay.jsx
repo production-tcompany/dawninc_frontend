@@ -1,59 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { DetailsDropdown } from "../Util/DetailsDropdown";
 import { CiHeart } from "react-icons/ci";
 import { HiArrowLeft } from "react-icons/hi2";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import blue1 from "../Assets/productimage/BLUE 2.png";
-import blue2 from "../Assets/productimage/BLUE 3.png";
-import blue3 from "../Assets/productimage/IMG_7927.PNG";
+import { ProductContext } from "../Context/ProductContext";
+import { apiURL } from "../Constants/Constant";
+import { CartContext } from "../Context/CartContext";
+import { Toaster, toast } from "react-hot-toast";
 
 export const ProductDisplay = ({ productId }) => {
   let navigate = useNavigate();
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  const { products } = useContext(ProductContext);
+  const { addToCart } = useContext(CartContext);
+
+  // Find the product by filtering the products array
+  const product = products.find((prod) => prod._id === productId);
   // Sample data for the product
-  const sampleProductData = [
-    {
-      id: "1",
-      name: "Light Project Hoodie V1",
-      price: 1799,
-      image: [
-        "https://drive.google.com/thumbnail?id=1mqPyPd908ConYnynEWQYpdmGK6bxcRVG&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1-LppYEgUplrZguQIbFCMlnmcQWikHEIb&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1i5lTRONYWfWS4PdrVKoxs3ARewzw2TVI&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1zf4AhxUbaAM2N-KlZ7nOq3YJYXjLhSCr&sz=w1000",
-      ],
-      rating: "",
-      sizes: ["S", "M", "L"],
-      color: "Black",
-      colorCode: "#000000",
-    },
-    {
-      id: "2",
-      name: "Light Project Hoodie V2",
-      price: 1799,
-      image: [blue1, blue2, blue3],
-      rating: "",
-      sizes: ["S", "M", "L"],
-      color: "Blue",
-      colorCode: "#020140",
-    },
-  ];
-  const [product, setProduct] = useState(null);
+  //const [product, setProduct] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  useEffect(() => {
-    // Simulate fetching product details based on the product ID
-    const fetchProduct = () => {
-      // Find the product with the matching ID
-      const foundProduct = sampleProductData.find(
-        (product) => product.id === productId
-      );
-      setProduct(foundProduct);
-    };
-
-    fetchProduct();
-  }, [productId]);
-
+  //Image clickes
   const handleImageClick = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % product.image.length);
   };
@@ -67,6 +37,7 @@ export const ProductDisplay = ({ productId }) => {
 
   return (
     <div className="pt-28">
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="flex flex-col justify-evenly md:flex-row p-4 sm:p-0">
         {/* Product Image mobile */}
         <div>
@@ -119,7 +90,7 @@ export const ProductDisplay = ({ productId }) => {
           </div>
 
           <div className="text-xl mt-4">₹{product.price}</div>
-          <div className="text-grey-500 mt-4">Rating: {product.rating}</div>
+          {/*<div className="text-grey-500 mt-4">Rating:</div>*/}
 
           {/* Size Options */}
           <div className="mt-4">
@@ -128,7 +99,13 @@ export const ProductDisplay = ({ productId }) => {
               {product.sizes.map((size) => (
                 <button
                   key={size}
-                  className="w-12 h-8 border border-gray-300 px-4 py-2 mr-2 flex items-center justify-center hover:bg-black hover:text-white"
+                  className={`w-12 h-8 border border-gray-300 px-4 py-2 mr-2 flex items-center justify-center 
+                ${
+                  selectedSize === size
+                    ? "bg-black text-white"
+                    : "hover:bg-black hover:text-white"
+                }`}
+                  onClick={() => setSelectedSize(size)}
                 >
                   {size}
                 </button>
@@ -137,27 +114,34 @@ export const ProductDisplay = ({ productId }) => {
           </div>
 
           {/* Color Option */}
-          <div className="mt-4">
-            <span className="text-lg">{product.color}</span>
+          {/*<div className="mt-4">
+            <span className="text-lg">{product.colorsAvailable}</span>
             <div className="mt-2">
               <button
                 className="w-8 h-8 rounded-full border-2 border-gray-300"
                 style={{ backgroundColor: product.colorCode }}
               ></button>
             </div>
-          </div>
+          </div>*/}
 
           {/* Action Buttons */}
           <div className="mt-6">
             <button className="bg-white text-black px-6 py-3 outline outline-black  outline-1 rounded mr-4 w-full hover:bg-black hover:text-white">
               BUY NOW
             </button>
-            <button className="bg-white text-black mt-4 px-6 py-3 outline outline-black outline-1 rounded mr-4 w-full hover:bg-black hover:text-white">
+            <button
+              onClick={() =>
+                selectedSize
+                  ? addToCart(product._id, selectedSize)
+                  : toast.error("Please select the size!")
+              }
+              className="bg-white text-black mt-4 px-6 py-3 outline outline-black outline-1 rounded mr-4 w-full hover:bg-black hover:text-white"
+            >
               ADD TO CART
             </button>
           </div>
 
-          {/* Delivery Estimation */}
+          {/* Delivery Estimation 
           <div className="mt-6">
             <div>
               <span className="text-lg">Estimated delivery</span>
@@ -168,10 +152,10 @@ export const ProductDisplay = ({ productId }) => {
               placeholder="Enter Pincode"
               className="border border-gray-300 px-4 py-2 mt-2 w-full md:w-1/2 rounded"
             />
-          </div>
+          </div>*/}
           {/* Details Dropdown */}
           <div className="mt-6">
-            <DetailsDropdown />
+            <DetailsDropdown details={product.description} />
           </div>
         </div>
 

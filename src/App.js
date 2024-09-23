@@ -9,7 +9,8 @@ import { Signup } from "./Pages/Signin";
 import { Account } from "./Pages/Account";
 import { Orders } from "./Pages/Orders";
 import { Wishlist } from "./Pages/Wishlist";
-import { TrackOrder } from "./Pages/TrackOrder"
+import { TrackOrder } from "./Pages/TrackOrder";
+import PlaceOrder from "./Pages/PlaceOrder";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/orders" element={<Orders />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/trackorders" element={<TrackOrder />} />
+            <Route path="/placeorders" element={<PlaceOrder />} />
             <Route path="/collections/:category" element={<Collections />} />
             <Route path="/product/:id" element={<Product />} />
           </Routes>

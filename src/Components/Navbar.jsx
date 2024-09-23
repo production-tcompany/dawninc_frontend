@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { BsCart, BsFillTriangleFill } from "react-icons/bs";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { Cart } from "../Util/Cart";
 import logo from "../Assets/LOGO-red.png";
+import { ShopContext } from "../Context/ShopContext";
 
 export const Navbar = () => {
   const location = useLocation();
@@ -12,6 +13,8 @@ export const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSidebarDropdownOpen, setIsSidebarDropdownOpen] = useState(false);
   const sidebarRef = useRef();
+
+  const { open, setOpen } = useContext(ShopContext);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -229,16 +232,17 @@ export const Navbar = () => {
             </div>
           </Link>
 
-          <a
-            href="/login"
+          <button
             className={`flex items-center space-x-2 md:space-x-3 font-light ${textColor}`}
-            onClick={() => {}}
+            onClick={() => {
+              setOpen(true);
+            }}
           >
             <span>Shopping Cart</span>
             <BsCart
               className={`w-4 h-4 md:w-6 md:h-6 ml-1 md:ml-2 ${textColor}`}
             />
-          </a>
+          </button>
         </div>
         <Cart />
       </nav>

@@ -1,52 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import blue1 from "../Assets/productimage/BLUE 2.png";
 import blue2 from "../Assets/productimage/BLUE 3.png";
-// Sample data for the products
-const sampleProducts = {
-  hoodies: [
-    {
-      id: "1",
-      name: "Light Project Hoodie V1",
-      price: 1799,
-      image: [
-        "https://drive.google.com/thumbnail?id=1mqPyPd908ConYnynEWQYpdmGK6bxcRVG&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1-LppYEgUplrZguQIbFCMlnmcQWikHEIb&sz=w1000",
-      ],
-      colorCode: "#000000",
-    },
-    {
-      id: "2",
-      name: "Light Project Hoodie V2",
-      price: 1799,
-      image: [blue2, blue1],
-      colorCode: "#020140",
-    },
-  ],
-  shirts: [],
-  tshirts: [],
-  pants: [],
-};
+import { ProductContext } from "../Context/ProductContext";
 
 export const Items = ({ category }) => {
-  let products = [];
+  const { products } = useContext(ProductContext);
+  console.log(products);
+  let productsFilter = [];
 
   if (category === "allproducts") {
-    products = Object.values(sampleProducts).flat();
+    productsFilter = products;
   } else {
-    products = sampleProducts[category] || [];
+    productsFilter = products.filter(
+      (prod) => prod.category.toUpperCase() === category.toUpperCase()
+    );
   }
 
-  if (products.length === 0) {
+  if (productsFilter.length === 0) {
     return <div className="p-6 pt-24">No products available</div>;
   }
 
   return (
     <>
-      {products.map((product) => (
+      {productsFilter.map((product) => (
         <Link
-          key={product.id}
-          to={`/product/${product.id}`}
+          key={product._id}
+          to={`/product/${product._id}`}
           style={{ textDecoration: "none" }}
         >
           <div className="group relative h-[530px]">
@@ -80,7 +60,7 @@ export const Items = ({ category }) => {
               <div className="justify-items-center">
                 <div
                   className="w-4 h-4 p-0.5 rounded-full ring-2 ring-gray-900"
-                  style={{ backgroundColor: product.colorCode }}
+                  //style={{ backgroundColor: product.colorCode }}
                 ></div>
               </div>
             </div>
